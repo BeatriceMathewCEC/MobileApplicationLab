@@ -1,0 +1,78 @@
+package com.example.imagetoggle;
+
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    ImageView i1, i2;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        i1 = findViewById(R.id.img1);
+        i2 = findViewById(R.id.img2);
+
+
+        i1.setOnClickListener(this);
+        i2.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if (view.getId() == R.id.img1) {
+
+
+            i1.setVisibility(View.GONE);
+            i2.setVisibility(View.VISIBLE);
+
+        } else if (view.getId() == R.id.img2) {
+
+
+            i2.setVisibility(View.GONE);
+            i1.setVisibility(View.VISIBLE);
+        }
+    }
+}
+
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BDBABA"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:adjustViewBounds="true"
+        android:background="#CACAC8"
+        android:contentDescription="Image 1"
+        app:srcCompat="@drawable/f" />
+
+    <ImageView
+        android:id="@+id/img2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:adjustViewBounds="true"
+        android:visibility="gone"
+        android:contentDescription="Image 2"
+        app:srcCompat="@drawable/image2" />
+
+</FrameLayout>
+
